@@ -1,4 +1,4 @@
-import { Button, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "space-between",
     paddingHorizontal: 20,
+    paddingBottom: 20,
+    paddingTop: 60,
   },
   loginBtn: {
     alignItems: "center",
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 10,
     borderRadius: 3,
-    marginBottom: 20,
     borderColor: "#19303D",
     borderWidth: 1,
     borderStyle: "solid",
@@ -49,7 +50,6 @@ const styles = StyleSheet.create({
     height: 45,
     paddingHorizontal: 10,
     borderRadius: 3,
-    marginBottom: 20,
     backgroundColor: "#19303D",
   },
   buttonTextDark: {
@@ -64,8 +64,13 @@ const styles = StyleSheet.create({
     height: 45,
     paddingHorizontal: 10,
     borderRadius: 3,
-    marginBottom: 20,
     backgroundColor: "#E5E8EB",
+  },
+  header: {
+    fontSize: 22,
+    fontWeight: "600",
+    marginBottom: 8,
+    fontFamily: "System",
   },
 });
 

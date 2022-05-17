@@ -46,7 +46,9 @@ app.post("/verify_otp", async (req, res) => {
       session_duration_minutes: 60 * 24 * 7, // start a 7 day session
     });
 
-    return res.status(200).json({ session_token: resp.session_token });
+    return res
+      .status(200)
+      .json({ session_token: resp.session_token, user: resp.session?.user_id });
   } catch (e: any) {
     console.error(e);
     return res.status(400).json({ error: e?.error_message });
@@ -64,12 +66,28 @@ app.post("/auth_session", async (req, res) => {
       session_token: session,
     });
 
-    return res.status(200).end();
+    return res.status(200).json({ user: resp.session.user_id });
   } catch (e: any) {
     console.error(e);
     return res.status(400).json({ error: e?.error_message });
   }
 });
+
+app.post("/logout", async (req, res) => {
+  const { session } = req.body;
+  if (!session) {
+    return res.status(400).json({ error: "No session provided" });
+  }
+
+  try {
+    await stytchClient.sessions.revoke({ session_token: session });
+    return res.status(200).end();
+  } catch (e: any) {
+    console.error(e?.message);
+    return res.status(400).json({ error: e?.error_message });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

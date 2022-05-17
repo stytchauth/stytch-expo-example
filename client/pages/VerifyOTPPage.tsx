@@ -13,8 +13,7 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import sharedStyles from "../src/styles/shared";
-import apiClient from "../src/apiClient";
-import * as SessionManager from "../src/sessionManager";
+import AuthContext from "../src/authContext";
 
 type Props = NativeStackScreenProps<RootStackParamList, "VerifyOTP">;
 
@@ -22,25 +21,23 @@ function VerifyOTPPage({ navigation, route }: Props) {
   const { methodId, phoneNumber } = route.params;
   const [otp, setOtp] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const { verifyOTP } = React.useContext(SessionManager.AuthContext);
+  const { verifyOTP } = React.useContext(AuthContext);
 
   const onPressNext = async () => {
     const error = await verifyOTP(otp, methodId);
 
     if (typeof error === "object") {
       setErrorMessage(error.errorMessage);
-    } else {
-      
     }
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
-        style={styles.container}
+        style={sharedStyles.container}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <View>
-          <Text style={styles.header}>
+          <Text style={sharedStyles.header}>
             Enter the code sent to{"\n"}
             {phoneNumber}
           </Text>
@@ -83,24 +80,11 @@ function VerifyOTPPage({ navigation, route }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flex: 1,
-    padding: 20,
-    color: "#fff",
-    paddingTop: 60,
-  },
-  header: {
-    fontSize: 22,
-    fontWeight: "600",
-    marginBottom: 8,
-    fontFamily: "System",
-  },
   row: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 20,
   },
   input: {
     height: 80,

@@ -1,5 +1,4 @@
-const BASE_URL = "http://10.103.177.165:3000";
-
+const BASE_URL = "http://localhost:3000";
 class APIClient {
   _url: string;
   constructor(baseUrl: string) {
@@ -11,7 +10,6 @@ class APIClient {
     method: string,
     body: BodyInit | null | undefined = undefined
   ) {
-    console.log(body);
     return fetch(this._url + path, {
       headers: { "Content-Type": "application/json" },
       method,
@@ -41,6 +39,10 @@ class APIClient {
 
   async authenticateSession(session: string) {
     return this._call("/auth_session", "POST", JSON.stringify({ session }));
+  }
+
+  async logout(session: string) {
+    return this._call("/logout", "POST", JSON.stringify({ session }));
   }
 }
 

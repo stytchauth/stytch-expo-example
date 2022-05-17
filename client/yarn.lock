@@ -2619,6 +2619,11 @@ expo-modules-core@0.6.5:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
+expo-secure-store@~11.1.0:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-11.1.1.tgz#16f727f56f5b0eef9817fc0d64d79be26f8a34a8"
+  integrity sha512-pCajYYoZbl8IORxXw83SLUsWlU6a+HmjJZP8oiSvkG1KnZ5gPepiAMRRmcFUApYXBgiOvKRGOBEUfVwmR7yO4A==
+
 expo-status-bar@~1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.2.0.tgz"

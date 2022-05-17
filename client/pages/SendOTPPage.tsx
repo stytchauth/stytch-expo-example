@@ -24,29 +24,29 @@ function SendOTPPage({ navigation }: Props) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
-        style={localStyles.container}
+        style={[sharedStyles.container, { padding: 20 }]}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <View>
-          <Text style={localStyles.header}>Enter your mobile number</Text>
+          <Text style={sharedStyles.header}>Enter your mobile number</Text>
           <TextInput
             keyboardType="phone-pad"
-            style={localStyles.input}
+            style={styles.input}
             dataDetectorTypes="phoneNumber"
             textContentType="telephoneNumber"
             value={phoneInput}
             onChangeText={(text) => setPhoneInput(text)}
             autoFocus
           ></TextInput>
-          <Text style={[localStyles.helperText]}>
+          <Text style={[styles.helperText]}>
             This demo is currently limited to phone numbers with the +1
             international code (United States).
           </Text>
           {errorMessage && (
-            <Text style={[localStyles.errorText]}>Error: {errorMessage}</Text>
+            <Text style={[styles.errorText]}>Error: {errorMessage}</Text>
           )}
         </View>
-        <View style={[localStyles.row]}>
+        <View style={[styles.row]}>
           <TouchableOpacity
             style={sharedStyles.buttonLight}
             onPress={() => navigation.navigate("Welcome")}
@@ -77,7 +77,7 @@ function SendOTPPage({ navigation }: Props) {
                   });
                 }
               } catch (e) {
-                console.log(e);
+                console.error(e);
               }
             }}
             disabled={waitingForResp}
@@ -90,7 +90,7 @@ function SendOTPPage({ navigation }: Props) {
   );
 }
 
-const localStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   input: {
     height: 50,
     borderWidth: 1,
@@ -99,24 +99,11 @@ const localStyles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
-  header: {
-    fontSize: 22,
-    fontWeight: "600",
-    marginBottom: 8,
-    fontFamily: "System",
-  },
-  container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flex: 1,
-    padding: 20,
-    color: "#fff",
-    paddingTop: 60,
-  },
   row: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 20,
   },
   helperText: {
     color: "#8296A1",

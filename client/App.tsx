@@ -1,16 +1,8 @@
-import { StatusBar } from "expo-status-bar";
-import { Image, Text, TouchableOpacity, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-  createNativeStackNavigator,
-  NativeStackScreenProps,
-} from "@react-navigation/native-stack";
-import styles from "./src/styles/shared";
-import LoginPage from "./pages/SendOTPPage";
-import VerifyOTPPage from "./pages/VerifyOTPPage";
-import ProfilePage from "./pages/ProfilePage";
-import { createContext, useEffect, useState } from "react";
-import * as SessionManager from "./src/sessionManager";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ProfilePage, SendOTPPage, VerifyOTPPage, WelcomePage } from "./pages";
+import { useEffect, useState } from "react";
+import AuthContext, { getAuthContext } from "./src/authContext";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -21,39 +13,35 @@ export type RootStackParamList = {
   };
   Profile: undefined;
 };
-type Props = NativeStackScreenProps<RootStackParamList, "Welcome">;
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [hasUser, setHasUser] = useState(false);
-  const ctx = SessionManager.getAuthContext(setHasUser)
-
-
-
-  console.log("APP");
+  const [user, setUser] = useState("");
+  const ctx = getAuthContext(setUser);
 
   useEffect(() => {
-    console.log("APP LEVEL USE EFFECT");
-    ctx.authenticateStoredSession()
-      .then((session) => {
-        console.log("APP LEVEL", session);
+    ctx
+      .authenticateStoredSession()
+      .then(() => {
         setLoading(false);
       })
-      .catch((error) => setLoading(false));
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
   }, []);
 
-  // if (loading) {
-  //   return null;
-  // }
+  if (loading) {
+    return null;
+  }
 
   return (
-    <SessionManager.AuthContext.Provider
-      value={SessionManager.getAuthContext(setHasUser)}
-    >
+    <AuthContext.Provider value={ctx}>
       <NavigationContainer>
         <Stack.Navigator>
-          {hasUser ? (
+          {user ? (
             <Stack.Screen
               name="Profile"
               component={ProfilePage}
@@ -63,12 +51,12 @@ function App() {
             <>
               <Stack.Screen
                 name="Welcome"
-                component={Welcome}
+                component={WelcomePage}
                 options={{ headerShown: false }}
               />
               <Stack.Screen
                 name="SendOTP"
-                component={LoginPage}
+                component={SendOTPPage}
                 options={{ headerShown: false }}
               />
               <Stack.Screen
@@ -80,23 +68,7 @@ function App() {
           )}
         </Stack.Navigator>
       </NavigationContainer>
-    </SessionManager.AuthContext.Provider>
-  );
-}
-function Welcome({ navigation }: Props) {
-  return (
-    <View style={styles.container}>
-      <Image
-        style={{ width: "100%", resizeMode: "contain" }}
-        source={require("./assets/logo.png")}
-      ></Image>
-      <TouchableOpacity
-        style={styles.buttonDark}
-        onPress={() => navigation.navigate("SendOTP")}
-      >
-        <Text style={styles.buttonTextDark}>Login or sign up</Text>
-      </TouchableOpacity>
-    </View>
+    </AuthContext.Provider>
   );
 }
 
