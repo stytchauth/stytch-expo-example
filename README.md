@@ -15,7 +15,9 @@ It is best practice for API secrets to not be stored client side. For that reaso
 
 ## Running locally
 
-Run the following commands in the terminal of your choice.
+**Create a Stytch account**
+
+First you will need to sign up and create a new project in [Stytch](https://stytch.com/). Then run the following commands in the terminal of your choice.
 
 **Install Expo**
 ```bash
