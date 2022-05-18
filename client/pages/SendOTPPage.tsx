@@ -12,7 +12,7 @@ import {
   View,
 } from "react-native";
 import { RootStackParamList } from "../App";
-import APIClient from "../src/apiClient";
+import * as APIClient from "../src/apiClient";
 import sharedStyles from "../src/styles/shared";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SendOTP">;
