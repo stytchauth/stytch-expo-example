@@ -13,6 +13,18 @@ This application demonstrates a mobile friendly signup and sign in flow powered 
 ### What is the purpose of the Express/Node server?
 It is best practice for API secrets to not be stored client side. For that reason, the client application communicates with the Express/Node server, and the server interacts with the Stytch API. This architecture keeps the Stytch API secret key off the user's device.
 
+## Security considerations when building your mobile application
+
+### Session storage
+
+It is important to store long lived sessions, and other sensitive data securely client-side. This example uses [`expo-secure-store`](https://docs.expo.dev/versions/latest/sdk/securestore/) to store the user session which leverages iOS keychain and Android's encrypted Keystore system.
+
+### Redirects and deep linking
+
+Mobile applications have specific attack vectors which don't apply to web applications. Stytch's email magic links and OAuth authentication products rely on redirect URLs to function; in the case of a mobile application you would use a deep link as a redirect URL. Native deep linking is dangerous to use for these redirect URLs as you should never pass sensitive information in them ([more information](https://reactnative.dev/docs/security#authentication-and-deep-linking)).
+
+Stytch does not currently support Proof of Key Code Exchange (PKCE) which makes this flows secure. We are actively working on it, but our current recommendation is to not use Stytch's email magic links or OAuth products in your mobile application. If you have questions please reach out to support@stytch.com, and we can provide further guidance. 
+
 ## Running locally
 
 **Create a Stytch account**
