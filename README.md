@@ -23,7 +23,7 @@ It is important to store long lived sessions, and other sensitive data securely 
 
 Mobile applications have specific attack vectors which don't apply to web applications. Stytch's email magic links and OAuth authentication products rely on redirect URLs to function; in the case of a mobile application you would use a deep link as a redirect URL. Native deep linking is dangerous to use for these redirect URLs as you should never pass sensitive information in them ([more information](https://reactnative.dev/docs/security#authentication-and-deep-linking)).
 
-Stytch does not currently support Proof of Key Code Exchange (PKCE) which makes this flows secure. We are actively working on it, but our current recommendation is to not use Stytch's email magic links or OAuth products in your mobile application. If you have questions please reach out to support@stytch.com, and we can provide further guidance. 
+Stytch does not currently support Proof of Key Code Exchange (PKCE) which makes this flow secure. We are actively working on it, but our current policy is to not allow deep link redirect URLs when using Stytch's email magic links or OAuth products in your mobile application. You can use universal linking to safely enable these flows if configured properly. If you have questions please reach out to support@stytch.com, and we can provide further guidance. 
 
 ## Running locally
 
