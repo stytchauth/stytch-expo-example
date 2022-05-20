@@ -1,5 +1,5 @@
 # Stytch + Expo example app
-![expo](https://user-images.githubusercontent.com/100632220/169390962-c7408024-716b-4c24-9713-2f65f160c9c1.png)
+![expoExampleApp](https://user-images.githubusercontent.com/100632220/169424762-67caa828-2b05-43f7-9055-067014676316.png)
 
 ## Overview
 This example app includes two services:
