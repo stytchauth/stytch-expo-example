@@ -1,10 +1,10 @@
-import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import sharedStyles from "../src/styles/shared";
-import AuthContext from "../src/authContext";
+import { useStytch } from "@stytch/react-native-expo";
 
 function ProfilePage() {
-  const { logout } = React.useContext(AuthContext);
+  const stytch = useStytch();
+
   return (
     <View style={sharedStyles.container}>
       <View>
@@ -15,7 +15,7 @@ function ProfilePage() {
           app on Github to learn how to implement this yourself!
         </Text>
       </View>
-      <TouchableOpacity style={[sharedStyles.buttonDark]} onPress={logout}>
+      <TouchableOpacity style={[sharedStyles.buttonDark]} onPress={stytch.session.revoke}>
         <Text style={[sharedStyles.buttonTextDark]}>Logout</Text>
       </TouchableOpacity>
     </View>

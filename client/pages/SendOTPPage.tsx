@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -12,14 +12,18 @@ import {
   View,
 } from "react-native";
 import { RootStackParamList } from "../App";
-import * as APIClient from "../src/apiClient";
 import sharedStyles from "../src/styles/shared";
+import { useStytch } from '@stytch/react-native-expo';
 
-type Props = NativeStackScreenProps<RootStackParamList, "SendOTP">;
+type NavProps = NativeStackScreenProps<RootStackParamList, "SendOTP">;
+type Props = NavProps & {
+  setMethodId: (methodId: string) => void;
+}
 
 function SendOTPPage({ navigation }: Props) {
+  const stytch = useStytch();
   const [phoneInput, setPhoneInput] = useState("");
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [waitingForResp, setWaitingForResp] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -62,18 +66,16 @@ function SendOTPPage({ navigation }: Props) {
             onPress={async () => {
               setWaitingForResp(true);
               try {
-                const resp = await APIClient.sendOTP(phoneInput);
-                if (resp.status !== 200) {
-                  const data = await resp.json();
-                  setErrorMessage(data?.error);
+                const resp = await stytch.otps.sms.loginOrCreate(phoneInput);
+                if (resp.status_code !== 200) {
+                  setErrorMessage('Unable to send OTP');
                   setWaitingForResp(false);
                 } else {
                   // Move to next page
-                  const data = await resp.json();
                   setWaitingForResp(false);
                   navigation.navigate("VerifyOTP", {
                     phoneNumber: phoneInput,
-                    methodId: data.method_id,
+                    methodId: resp.method_id,
                   });
                 }
               } catch (e) {
