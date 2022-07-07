@@ -14,6 +14,14 @@ This application demonstrates a mobile friendly signup and sign in flow powered 
 
 First you will need to sign up and create a new project in [Stytch](https://stytch.com/). Then run the following commands in the terminal of your choice.
 
+**Stytch Dashboard Configuration**
+
+You'll need to take some steps in the [Stytch Dashboard SDK Configuration](https://stytch.com/dashboard/sdk-configuration) in order to enable your project to use the SDK.
+
+1. Enable SDK for your project
+2. Add `stytch.rn.test` as a Bundle ID
+3. Enable SMS Passcodes (OTP)
+
 **Install Expo**
 ```bash
 npm install --global expo-cli
