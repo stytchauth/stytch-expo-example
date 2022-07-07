@@ -53,7 +53,6 @@ function App() {
 }
 
 function AppWrapper() {
-  console.log(Constants, 'abc');
   const stytch = new StytchClient(Constants.manifest?.extra?.stytchPublicToken || '')
   return (
     <StytchProvider stytch={stytch}>
