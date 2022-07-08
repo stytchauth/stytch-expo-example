@@ -2,7 +2,7 @@
 ![expoExampleApp](https://user-images.githubusercontent.com/100632220/169424762-67caa828-2b05-43f7-9055-067014676316.png)
 
 ## Overview
-This example app includes A mobile application powered by React Native and Expo
+This example app includes a mobile application powered by React Native and Expo
 
 This application demonstrates a mobile friendly signup and sign in flow powered by Stytch. In this example the following Stytch products are used:
 1. [SMS passcodes](https://stytch.com/products/sms-passcodes)
