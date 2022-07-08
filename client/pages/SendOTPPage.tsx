@@ -68,7 +68,7 @@ function SendOTPPage({ navigation }: Props) {
               try {
                 const resp = await stytch.otps.sms.loginOrCreate(phoneInput);
                 if (resp.status_code !== 200) {
-                  setErrorMessage('Unable to send OTP');
+                  setErrorMessage('Unable to send OTP, is the number format correct?');
                   setWaitingForResp(false);
                 } else {
                   // Move to next page
