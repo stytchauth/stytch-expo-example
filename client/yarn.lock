@@ -1558,30 +1558,26 @@
   "resolved" "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz"
   "version" "2.0.0"
 
-"@stytch/core@^0.0.0":
+"@stytch/core@*":
   "integrity" "sha512-7iuO+8fs9v1C/LWVvHRH0fzqiod9apuSXA3z0lYjWXEuGjeXpiGACKkoO2kxlVzG0iasFjtLgGRxDfEssj2b6A=="
   "resolved" "https://registry.npmjs.org/@stytch/core/-/core-0.0.0.tgz"
   "version" "0.0.0"
   dependencies:
     "uuid" "^8.3.2"
 
-"@stytch/headless-client@^0.0.6":
+"@stytch/headless-client@*":
   "integrity" "sha512-EcH2nsYrJmT8hZnz0jizc/Jrid2v+/SKaOgElL9dip5Ok8jkOZcTPH7ZobnlsFzQv1p2Uc/lwW2sIX6B3YBrPQ=="
   "resolved" "https://registry.npmjs.org/@stytch/headless-client/-/headless-client-0.0.6.tgz"
   "version" "0.0.6"
 
-"@stytch/headless-client@0.0.0":
-  "integrity" "sha512-Gi66QGAVXgQBdRjhUXRX7388mxXX7QBCVSNvcVO1HROUX77rQSP8QlfyxfuREh6wm5SC7uESqg51gLHNTttwZg=="
-  "resolved" "https://registry.npmjs.org/@stytch/headless-client/-/headless-client-0.0.0.tgz"
-  "version" "0.0.0"
-
-"@stytch/react-native-expo@^0.0.1":
-  "integrity" "sha512-53WbDE0yslghvU7ZLlScmuGUh/8hELVGYo3HATSKXaU1LXkjWwZiGBnA3hcQZ9Bc6/TdClmgCt6+BydZ7QaJ9g=="
-  "resolved" "https://registry.npmjs.org/@stytch/react-native-expo/-/react-native-expo-0.0.1.tgz"
-  "version" "0.0.1"
+"@stytch/react-native-expo@^0.1.2":
+  "integrity" "sha512-4i8B8VOCL2DuOqUYAml0iPN9Ew3sXijxVsETZrULelj/cwHrk6MutG7wgrCta5Z/PaXd8gCYkheccTB9/LgnNA=="
+  "resolved" "https://registry.npmjs.org/@stytch/react-native-expo/-/react-native-expo-0.1.2.tgz"
+  "version" "0.1.2"
   dependencies:
     "@babel/runtime" "^7.18.6"
-    "@stytch/headless-client" "0.0.0"
+    "@stytch/core" "*"
+    "@stytch/headless-client" "*"
     "@types/estree" "^0.0.47"
     "base-64" "^1.0.0"
     "expo-constants" "^13.1.1"
