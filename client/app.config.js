@@ -4,7 +4,7 @@ export default {
   name: 'CoolApp',
   version: '1.0.0',
   extra: {
-    stytchPublicToken: process.env.STYTCH_PUBLIC_TOKEN || 'abc',
+    stytchPublicToken: process.env.STYTCH_PUBLIC_TOKEN || '',
   },
   name: "stytch-expo-example",
   slug: "stytch-expo-example",
