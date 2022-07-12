@@ -25,6 +25,30 @@ function SendOTPPage({ navigation }: Props) {
   const [phoneInput, setPhoneInput] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [waitingForResp, setWaitingForResp] = useState(false);
+
+  const onSendOtp = async () => {
+    setWaitingForResp(true);
+    try {
+      const resp = await stytch.otps.sms.loginOrCreate(`+1${phoneInput}`);
+      console.log(resp);
+      if (resp.status_code !== 200) {
+        setErrorMessage('Unable to send OTP, is the number format correct?');
+        setWaitingForResp(false);
+      } else {
+        // Move to next page
+        setWaitingForResp(false);
+        navigation.navigate("VerifyOTP", {
+          phoneNumber: phoneInput,
+          methodId: resp.method_id,
+        });
+      }
+    } catch (e) {
+      setErrorMessage('Unable to send OTP, is the number format correct?');
+      setWaitingForResp(false);
+      console.error(e);
+    }
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
@@ -43,11 +67,11 @@ function SendOTPPage({ navigation }: Props) {
             autoFocus
           ></TextInput>
           <Text style={[styles.helperText]}>
-            This demo is currently limited to phone numbers with the +1
+            Please enter your 10 digit phone number. This demo is currently limited to phone numbers with the +1
             international code (United States).
           </Text>
-          {errorMessage && (
-            <Text style={[styles.errorText]}>Error: {errorMessage}</Text>
+          {!!errorMessage && (
+            <Text style={styles.errorText}>Error: {errorMessage}</Text>
           )}
         </View>
         <View style={[styles.row]}>
@@ -63,25 +87,7 @@ function SendOTPPage({ navigation }: Props) {
                 ? sharedStyles.buttonDisabled
                 : sharedStyles.buttonDark
             }
-            onPress={async () => {
-              setWaitingForResp(true);
-              try {
-                const resp = await stytch.otps.sms.loginOrCreate(phoneInput);
-                if (resp.status_code !== 200) {
-                  setErrorMessage('Unable to send OTP, is the number format correct?');
-                  setWaitingForResp(false);
-                } else {
-                  // Move to next page
-                  setWaitingForResp(false);
-                  navigation.navigate("VerifyOTP", {
-                    phoneNumber: phoneInput,
-                    methodId: resp.method_id,
-                  });
-                }
-              } catch (e) {
-                console.error(e);
-              }
-            }}
+            onPress={onSendOtp}
             disabled={waitingForResp}
           >
             <Text style={sharedStyles.buttonTextDark}>Next</Text>
@@ -113,8 +119,7 @@ const styles = StyleSheet.create({
   errorText: {
     marginTop: 10,
     color: "#892426",
-    fontWeight: "600",
-    fontFamily: "System",
+    fontWeight: "600"
   },
 });
 
