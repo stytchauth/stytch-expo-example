@@ -30,7 +30,6 @@ function SendOTPPage({ navigation }: Props) {
     setWaitingForResp(true);
     try {
       const resp = await stytch.otps.sms.loginOrCreate(`+1${phoneInput}`);
-      console.log(resp);
       if (resp.status_code !== 200) {
         setErrorMessage('Unable to send OTP, is the number format correct?');
         setWaitingForResp(false);
