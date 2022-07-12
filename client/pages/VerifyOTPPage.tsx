@@ -13,22 +13,22 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import sharedStyles from "../src/styles/shared";
-import AuthContext from "../src/authContext";
+import { useStytch } from '@stytch/react-native-expo'
 
 type Props = NativeStackScreenProps<RootStackParamList, "VerifyOTP">;
 
 function VerifyOTPPage({ navigation, route }: Props) {
+  const stytch = useStytch();
   const { methodId, phoneNumber } = route.params;
   const [otp, setOtp] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const { verifyOTP } = React.useContext(AuthContext);
 
   const onPressNext = async () => {
-    const error = await verifyOTP(otp, methodId);
-
-    if (typeof error === "object") {
-      setErrorMessage(error.errorMessage);
+    const res = await stytch.otps.authenticate(otp, methodId, { session_duration_minutes: 60 });
+    if (res.status_code !== 200) {
+      setErrorMessage('Unable to authenticate, please try again.')
     }
+    // Successful authentication here will cause user to be populated in App.tsx and trigger redirect.
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
