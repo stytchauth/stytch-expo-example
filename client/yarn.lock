@@ -1570,7 +1570,7 @@
   "resolved" "https://registry.npmjs.org/@stytch/headless-client/-/headless-client-0.0.6.tgz"
   "version" "0.0.6"
 
-"@stytch/react-native-expo@^0.0.3":
+"@stytch/react-native-expo@*":
   "integrity" "sha512-Mxcf8yuviB8z7BezvAaCwr1BaJlS15edz/Q0KXgEkwKsRDIMLs/wvMqyenZb1CEQ94F6lYKQmh3wosQOvnYemg=="
   "resolved" "https://registry.npmjs.org/@stytch/react-native-expo/-/react-native-expo-0.0.3.tgz"
   "version" "0.0.3"
