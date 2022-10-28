@@ -15,7 +15,7 @@
     "@react-navigation/native-stack": "^6.6.2",
     "@stytch/react-native-expo": "*",
     "babel-plugin-inline-dotenv": "^1.7.0",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "babel-plugin-transform-inline-environment-variables": "^6.8.0",
     "dotenv": "^16.0.1",
     "expo": "~44.0.0",
     "expo-constants": "^13.1.1",
