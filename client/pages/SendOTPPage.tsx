@@ -13,12 +13,12 @@ import {
 } from "react-native";
 import { RootStackParamList } from "../App";
 import sharedStyles from "../src/styles/shared";
-import { useStytch } from '@stytch/react-native-expo';
+import { useStytch } from "@stytch/react-native-expo-testing";
 
 type NavProps = NativeStackScreenProps<RootStackParamList, "SendOTP">;
 type Props = NavProps & {
   setMethodId: (methodId: string) => void;
-}
+};
 
 function SendOTPPage({ navigation }: Props) {
   const stytch = useStytch();
@@ -31,7 +31,7 @@ function SendOTPPage({ navigation }: Props) {
     try {
       const resp = await stytch.otps.sms.loginOrCreate(`+1${phoneInput}`);
       if (resp.status_code !== 200) {
-        setErrorMessage('Unable to send OTP, is the number format correct?');
+        setErrorMessage("Unable to send OTP, is the number format correct?");
         setWaitingForResp(false);
       } else {
         // Move to next page
@@ -42,11 +42,11 @@ function SendOTPPage({ navigation }: Props) {
         });
       }
     } catch (e) {
-      setErrorMessage('Unable to send OTP, is the number format correct?');
+      setErrorMessage("Unable to send OTP, is the number format correct?");
       setWaitingForResp(false);
       console.error(e);
     }
-  }
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -66,8 +66,9 @@ function SendOTPPage({ navigation }: Props) {
             autoFocus
           ></TextInput>
           <Text style={[styles.helperText]}>
-            Please enter your 10 digit phone number. This demo is currently limited to phone numbers with the +1
-            international code (United States).
+            Please enter your 10 digit phone number. This demo is currently
+            limited to phone numbers with the +1 international code (United
+            States).
           </Text>
           {!!errorMessage && (
             <Text style={styles.errorText}>Error: {errorMessage}</Text>
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
   errorText: {
     marginTop: 10,
     color: "#892426",
-    fontWeight: "600"
+    fontWeight: "600",
   },
 });
 

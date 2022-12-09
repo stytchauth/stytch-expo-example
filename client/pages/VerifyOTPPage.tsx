@@ -13,7 +13,7 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import sharedStyles from "../src/styles/shared";
-import { useStytch } from '@stytch/react-native-expo'
+import { useStytch } from "@stytch/react-native-expo-testing";
 
 type Props = NativeStackScreenProps<RootStackParamList, "VerifyOTP">;
 
@@ -24,9 +24,11 @@ function VerifyOTPPage({ navigation, route }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onPressNext = async () => {
-    const res = await stytch.otps.authenticate(otp, methodId, { session_duration_minutes: 60 });
+    const res = await stytch.otps.authenticate(otp, methodId, {
+      session_duration_minutes: 60,
+    });
     if (res.status_code !== 200) {
-      setErrorMessage('Unable to authenticate, please try again.')
+      setErrorMessage("Unable to authenticate, please try again.");
     }
     // Successful authentication here will cause user to be populated in App.tsx and trigger redirect.
   };
