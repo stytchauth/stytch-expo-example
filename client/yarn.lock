@@ -1761,22 +1761,22 @@
   "resolved" "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz"
   "version" "2.0.0"
 
-"@stytch/core@0.4.7":
-  "integrity" "sha512-0uWVWsQqDIrY++SjQjcrh6cxjicJ6ihGkwuKenWBMIfgozugyxnr8JkLtBPlB2E7lsE7YnlhPzGkxShHDtSDnQ=="
-  "resolved" "https://registry.npmjs.org/@stytch/core/-/core-0.4.7.tgz"
-  "version" "0.4.7"
+"@stytch/core@0.4.9":
+  "integrity" "sha512-cfdReE34BQ6uA3HwMvBEMpVkEY8a2eCsogX2zhh5/xqIP2OIwKrLawMchUpjoZVKPcYT0uzDbCrRw+1+pDOc5Q=="
+  "resolved" "https://registry.npmjs.org/@stytch/core/-/core-0.4.9.tgz"
+  "version" "0.4.9"
   dependencies:
     "uuid" "8.3.2"
 
-"@stytch/react-native-expo-testing@^0.0.5":
-  "integrity" "sha512-chtwAAHZvQxPjPmOqum6wLD23DlXrghJv+5ajYg1gZZ4qDPESrNWrvn0X+09lKvJLmpLMM4UDB49Cf5miWyezg=="
-  "resolved" "https://registry.npmjs.org/@stytch/react-native-expo-testing/-/react-native-expo-testing-0.0.5.tgz"
-  "version" "0.0.5"
+"@stytch/react-native-expo@^0.3.14":
+  "integrity" "sha512-n8uqVjMAigNvDjYNKYJnJJGeDCcoQy7E+enVlgla61BTwaknsQQiDoSFLYigh4dfHQgFUU8clf1dxKJaw/czng=="
+  "resolved" "https://registry.npmjs.org/@stytch/react-native-expo/-/react-native-expo-0.3.14.tgz"
+  "version" "0.3.14"
   dependencies:
     "@babel/runtime" "7.18.6"
     "@react-native-async-storage/async-storage" "1.17.11"
-    "@stytch/core" "0.4.7"
-    "@stytch/react-native-modules" "0.0.9"
+    "@stytch/core" "0.4.9"
+    "@stytch/react-native-modules" "0.1.1"
     "@types/estree" "0.0.47"
     "@types/text-encoding" "0.0.36"
     "base-64" "1.0.0"
@@ -1790,10 +1790,10 @@
     "react-native-uuid" "2.0.1"
     "text-encoding" "0.7.0"
 
-"@stytch/react-native-modules@^0.0.9", "@stytch/react-native-modules@0.0.9":
-  "integrity" "sha512-0hZhkOlqoPJgF527fBBkeYgW96zxx1+0WhED2HVj42bbET4myV3kQjKNw6zjUDePchevufP2TCF11x7NogCJjA=="
-  "resolved" "https://registry.npmjs.org/@stytch/react-native-modules/-/react-native-modules-0.0.9.tgz"
-  "version" "0.0.9"
+"@stytch/react-native-modules@^0.1.1", "@stytch/react-native-modules@0.1.1":
+  "integrity" "sha512-DDI1x9YlGQ10l2hE1hpRRDGe4oMqJ+D/u8hcetL7Z4fioupGsmNL5cBJPcF2H2DFMGwQuWwHI8FCkJo91Jih1Q=="
+  "resolved" "https://registry.npmjs.org/@stytch/react-native-modules/-/react-native-modules-0.1.1.tgz"
+  "version" "0.1.1"
 
 "@types/estree@0.0.47":
   "integrity" "sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg=="

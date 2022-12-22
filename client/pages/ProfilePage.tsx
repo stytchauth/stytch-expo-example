@@ -1,6 +1,6 @@
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 import sharedStyles from "../src/styles/shared";
-import { useStytch, useStytchUser } from "@stytch/react-native-expo-testing";
+import { useStytch, useStytchUser } from "@stytch/react-native-expo";
 import React, { useState, useEffect } from "react";
 
 function ProfilePage() {

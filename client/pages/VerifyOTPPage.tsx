@@ -13,7 +13,7 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import sharedStyles from "../src/styles/shared";
-import { useStytch } from "@stytch/react-native-expo-testing";
+import { useStytch } from "@stytch/react-native-expo";
 
 type Props = NativeStackScreenProps<RootStackParamList, "VerifyOTP">;
 

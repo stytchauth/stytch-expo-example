@@ -6,7 +6,7 @@ import {
   StytchClient,
   StytchProvider,
   useStytchUser,
-} from "@stytch/react-native-expo-testing";
+} from "@stytch/react-native-expo";
 
 export type RootStackParamList = {
   Welcome: undefined;
