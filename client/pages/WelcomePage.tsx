@@ -3,7 +3,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import { useStytch } from "@stytch/react-native-expo";
 import styles from "../src/styles/shared";
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Welcome">;
 
@@ -12,15 +12,15 @@ function Welcome({ navigation }: Props) {
 
   const [hasBiometricRegistration, setBiometricRegistration] = useState(false);
 
-  const checkBiometricsRegistration = async () => {
-    await stytch.biometrics.isRegistrationAvailable().then((resp: boolean) => {
+  const checkBiometricsRegistration = useCallback(() => {
+    stytch.biometrics.isRegistrationAvailable().then((resp: boolean) => {
       setBiometricRegistration(resp);
     });
-  };
+  }, [stytch]);
 
   useEffect(() => {
     checkBiometricsRegistration();
-  });
+  }, [checkBiometricsRegistration]);
 
   const authenticateBiometrics = () => {
     stytch.biometrics

@@ -1,7 +1,7 @@
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 import sharedStyles from "../src/styles/shared";
 import { useStytch, useStytchUser } from "@stytch/react-native-expo";
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 function ProfilePage() {
   const stytch = useStytch();
@@ -11,19 +11,19 @@ function ProfilePage() {
   const [hasBiometricRegistration, setBiometricRegistration] = useState(false);
   const [sensorType, setSensorType] = useState("none");
 
-  const checkKeystoreAvailable = () => {
+  const checkKeystoreAvailable = useCallback(() => {
     stytch.biometrics.isKeystoreAvailable().then((resp) => {
       setKeystoreAvailable(resp);
     });
-  };
+  }, [stytch]);
 
-  const checkBiometricRegistration = () => {
+  const checkBiometricRegistration = useCallback(() => {
     stytch.biometrics.isRegistrationAvailable().then((resp) => {
       setBiometricRegistration(resp);
     });
-  };
+  }, [stytch]);
 
-  const checkSensor = () => {
+  const checkSensor = useCallback(() => {
     stytch.biometrics
       .getSensor()
       .then((resp) => {
@@ -31,13 +31,13 @@ function ProfilePage() {
         setSensorType(biometryType);
       })
       .catch((err) => console.log(err));
-  };
+  }, [stytch]);
 
   useEffect(() => {
     checkSensor();
     checkKeystoreAvailable();
     checkBiometricRegistration();
-  });
+  }, [checkSensor, checkKeystoreAvailable, checkBiometricRegistration]);
 
   const registerBiometrics = async () => {
     stytch.biometrics
@@ -45,7 +45,7 @@ function ProfilePage() {
         prompt: "Register biometrics",
         allowDeviceCredentials: true,
         allowFallbackToCleartext: false,
-        cancelButtonText: "Cancel reg",
+        cancelButtonText: "Cancel",
       })
       .then((resp) => {
         Alert.alert("Register successful", JSON.stringify(resp));
@@ -62,7 +62,7 @@ function ProfilePage() {
         prompt: "Authenticate biometrics",
         sessionDurationMinutes: 60,
         allowDeviceCredentials: true,
-        cancelButtonText: "Cancel Auth",
+        cancelButtonText: "Cancel",
       })
       .then((resp) => {
         Alert.alert("Authentication successful", JSON.stringify(resp));
@@ -96,7 +96,7 @@ function ProfilePage() {
         <Text>Your user ID is {!!user && user.user_id}</Text>
         <Text>Biometry type available: {sensorType}</Text>
       </View>
-      {isKeystoreAvailable && (
+      {isKeystoreAvailable && !hasBiometricRegistration && (
         <View>
           <TouchableOpacity
             style={sharedStyles.buttonDark}
@@ -107,28 +107,29 @@ function ProfilePage() {
         </View>
       )}
       {hasBiometricRegistration && (
-        <View>
-          <TouchableOpacity
-            style={sharedStyles.buttonDark}
-            onPress={authenticateBiometrics}
-          >
-            <Text style={sharedStyles.buttonTextDark}>
-              Authenticate with Biometrics
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <>
+          <View>
+            <TouchableOpacity
+              style={sharedStyles.buttonDark}
+              onPress={authenticateBiometrics}
+            >
+              <Text style={sharedStyles.buttonTextDark}>
+                Authenticate with Biometrics
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity
+              style={sharedStyles.buttonDark}
+              onPress={deleteBiometrics}
+            >
+              <Text style={sharedStyles.buttonTextDark}>
+                Delete Biometrics Registration
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </>
       )}
-      <View>
-        <TouchableOpacity
-          style={sharedStyles.buttonDark}
-          onPress={deleteBiometrics}
-        >
-          <Text style={sharedStyles.buttonTextDark}>
-            Delete Biometrics Registration
-          </Text>
-        </TouchableOpacity>
-      </View>
-
       <TouchableOpacity
         style={[sharedStyles.buttonDark]}
         onPress={stytch.session.revoke}
