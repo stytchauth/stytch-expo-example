@@ -12,9 +12,8 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
-    "@stytch/react-native-biometrics": "^0.0.8",
-    "@stytch/react-native-expo": "*",
-    "@stytch/react-native-expo-testing": "^0.0.1",
+    "@stytch/react-native-expo-testing": "^0.0.5",
+    "@stytch/react-native-modules": "^0.0.9",
     "babel-plugin-inline-dotenv": "^1.7.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "dotenv": "^16.0.1",
@@ -31,7 +30,7 @@
     "react-native-reanimated": "~2.8.0",
     "react-native-safe-area-context": "4.2.4",
     "react-native-safe-area-view": "^1.1.1",
-    "react-native-screens": "^3.18.2",
+    "react-native-screens": "~3.11.1",
     "react-native-web": "0.17.7"
   },
   "devDependencies": {
