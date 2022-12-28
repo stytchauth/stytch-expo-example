@@ -1,8 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ProfilePage, SendOTPPage, VerifyOTPPage, WelcomePage } from "./pages";
-import Constants from 'expo-constants';
-import { StytchClient, StytchProvider, useStytchUser } from '@stytch/react-native-expo';
+import Constants from "expo-constants";
+import {
+  StytchClient,
+  StytchProvider,
+  useStytchUser,
+} from "@stytch/react-native-expo";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -53,12 +57,14 @@ function App() {
 }
 
 function AppWrapper() {
-  const stytch = new StytchClient(Constants.manifest?.extra?.stytchPublicToken || '')
+  const stytch = new StytchClient(
+    Constants.manifest?.extra?.stytchPublicToken || ""
+  );
   return (
     <StytchProvider stytch={stytch}>
       <App />
     </StytchProvider>
-  )
+  );
 }
 
 export default AppWrapper;
