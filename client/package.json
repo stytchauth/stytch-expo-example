@@ -15,7 +15,7 @@
     "@stytch/react-native-expo": "^0.3.14",
     "@stytch/react-native-modules": "^0.1.1",
     "babel-plugin-inline-dotenv": "^1.7.0",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "babel-plugin-transform-inline-environment-variables": "^6.8.0",
     "dotenv": "^16.0.1",
     "expo": "^45.0.0",
     "expo-constants": "~13.1.1",
