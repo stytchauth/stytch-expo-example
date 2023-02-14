@@ -11,7 +11,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.0.10",
-    "@react-navigation/native-stack": "^6.6.2",
+    "@react-navigation/native-stack": "^6.9.8",
     "@stytch/react-native-expo": "^0.3.14",
     "@stytch/react-native-modules": "^0.1.1",
     "babel-plugin-inline-dotenv": "^1.7.0",
