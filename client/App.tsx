@@ -15,16 +15,31 @@ export type RootStackParamList = {
     phoneNumber: string;
     methodId: string;
   };
-  Profile: undefined;
+  Profile: undefined | { token: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const config = {
+  initialRouteName: "Welcome",
+  screens: {
+    Welcome: "Welcome",
+    SendOTP: "SendOTP",
+    VerifyOTP: "VerifyOTP",
+    Profile: "Profile",
+  },
+};
+
+const linking = {
+  prefixes: ["stytchexpo://"],
+  config: config,
+};
 
 function App() {
   const user = useStytchUser();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator>
         {user ? (
           <Stack.Screen

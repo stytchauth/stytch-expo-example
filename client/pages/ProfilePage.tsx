@@ -1,15 +1,35 @@
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 import sharedStyles from "../src/styles/shared";
 import { useStytch, useStytchUser } from "@stytch/react-native-expo";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../App";
 
-function ProfilePage() {
+type Props = NativeStackScreenProps<RootStackParamList, "Profile">;
+
+function ProfilePage({ route }: Props) {
   const stytch = useStytch();
   const user = useStytchUser();
 
   const [isKeystoreAvailable, setKeystoreAvailable] = useState(false);
   const [hasBiometricRegistration, setBiometricRegistration] = useState(false);
   const [sensorType, setSensorType] = useState("none");
+
+  useEffect(() => {
+    if (stytch && route.params) {
+      // Facebook adds characters "#_=_" to the end of the redirect url.
+      // If the token is not 44 characters long, slice the token to the correct length.
+      const token = route.params.token.slice(0, 44);
+      stytch.oauth
+        .authenticate(token, { session_duration_minutes: 60 })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [stytch, route]);
 
   const checkKeystoreAvailable = useCallback(() => {
     stytch.biometrics.isKeystoreAvailable().then((resp) => {

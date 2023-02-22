@@ -10,6 +10,29 @@ type Props = NativeStackScreenProps<RootStackParamList, "Welcome">;
 function Welcome({ navigation }: Props) {
   const stytch = useStytch();
 
+  const oAuthRedirectUrl = "stytchexpo://Profile";
+
+  const loginWithApple = () => {
+    stytch.oauth.apple.start({
+      login_redirect_url: oAuthRedirectUrl,
+      signup_redirect_url: oAuthRedirectUrl,
+    });
+  };
+
+  const loginWithFacebook = () => {
+    stytch.oauth.facebook.start({
+      login_redirect_url: oAuthRedirectUrl,
+      signup_redirect_url: oAuthRedirectUrl,
+    });
+  };
+
+  const loginWithGoogle = () => {
+    stytch.oauth.google.start({
+      login_redirect_url: oAuthRedirectUrl,
+      signup_redirect_url: oAuthRedirectUrl,
+    });
+  };
+
   const [hasBiometricRegistration, setBiometricRegistration] = useState(false);
 
   const checkBiometricsRegistration = useCallback(() => {
@@ -43,7 +66,16 @@ function Welcome({ navigation }: Props) {
         style={styles.buttonDark}
         onPress={() => navigation.navigate("SendOTP")}
       >
-        <Text style={styles.buttonTextDark}>Login or sign up</Text>
+        <Text style={styles.buttonTextDark}>Login with OTP</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDark} onPress={loginWithApple}>
+        <Text style={styles.buttonTextDark}>Login with Apple</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDark} onPress={loginWithFacebook}>
+        <Text style={styles.buttonTextDark}>Login with Facebook</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDark} onPress={loginWithGoogle}>
+        <Text style={styles.buttonTextDark}>Login with Google</Text>
       </TouchableOpacity>
       {hasBiometricRegistration && (
         <View style={{ padding: 10, marginBottom: 10 }}>
