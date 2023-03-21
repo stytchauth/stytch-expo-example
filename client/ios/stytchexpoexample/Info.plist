@@ -77,4 +77,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
+	<key>NSFaceIDUsageDescription</key>
+	<string>$(PRODUCT_NAME) Authentication with Biometrics</string>
 </plist>
