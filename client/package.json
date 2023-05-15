@@ -13,7 +13,7 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
-    "@stytch/react-native-expo": "^0.5.1",
+    "@stytch/react-native-expo": "^0.7.2",
     "@stytch/react-native-modules": "^0.2.1",
     "babel-plugin-inline-dotenv": "^1.7.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
