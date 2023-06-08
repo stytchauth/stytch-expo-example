@@ -13,16 +13,20 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stytch.sdk.expo.example"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.stytch.sdk.expo.example"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "owner": "stytch",
+    "scheme": "stytchexpoexample"
   }
 }
