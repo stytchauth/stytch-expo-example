@@ -18,12 +18,6 @@ export const styles = StyleSheet.create({
     fontFamily: "System",
     color: "#fff",
   },
-  buttonDisabled: {
-    justifyContent: "center",
-    height: 45,
-    borderRadius: 3,
-    backgroundColor: "#E5E8EB",
-  },
   header: {
     fontSize: 22,
     fontWeight: "600",
@@ -37,10 +31,5 @@ export const styles = StyleSheet.create({
   },
   helperText: {
     color: "#8296A1",
-  },
-  errorText: {
-    color: "#892426",
-    fontWeight: "600",
-    fontFamily: "System",
   },
 });
