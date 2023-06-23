@@ -48,7 +48,7 @@ Learn more about how to create and install a [development build](https://docs.ex
 
 ```bash
 npm run start
-// press 'i' to open on iOS, or 'a' to open on Android
+# press 'i' to open on iOS, or 'a' to open on Android
 ```
 
 ## Documentation
