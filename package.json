@@ -12,7 +12,7 @@
     "@stytch/react-native": "^0.8.4",
     "@stytch/react-native-inappbrowser-reborn": "^3.7.1",
     "dotenv": "^16.1.4",
-    "expo": "~48.0.18",
+    "expo": "~49.0.3",
     "expo-dev-client": "~2.2.1",
     "expo-linking": "~4.0.1",
     "react": "18.2.0",
