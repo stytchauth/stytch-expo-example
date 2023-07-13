@@ -1,74 +1,78 @@
 # Stytch + Expo example app
 
-![expoExampleApp](https://user-images.githubusercontent.com/100632220/169424762-67caa828-2b05-43f7-9055-067014676316.png)
-
 ## Overview
 
 This example app includes a mobile application powered by React Native and Expo
 
 This application demonstrates a mobile friendly signup and sign in flow powered by Stytch. In this example the following Stytch products are used:
 
-1. [SMS passcodes](https://stytch.com/products/sms-passcodes)
-2. [Session management](https://stytch.com/products/session-management)
-3. [Biometrics](https://stytch.com/products/mobile-biometrics)
+1. [Email Magic Links](https://stytch.com/products/email-magic-links)
+2. [SMS passcodes](https://stytch.com/products/sms-passcodes)
+3. [OAuth](https://stytch.com/products/oauth)
+4. [Biometrics](https://stytch.com/products/mobile-biometrics)
+5. [Session management](https://stytch.com/products/session-management)
 
 ## Running locally
 
 **Create a Stytch account**
 
-First you will need to sign up and create a new project in [Stytch](https://stytch.com/). Then run the following commands in the terminal of your choice.
+Sign up and create a new project in [Stytch](https://stytch.com).
 
 **Stytch Dashboard Configuration**
 
-You'll need to take some steps in the [Stytch Dashboard SDK Configuration](https://stytch.com/dashboard/sdk-configuration) in order to enable your project to use the SDK.
+Open the [Stytch Dashboard Frontend SDK Configuration](https://stytch.com/dashboard/sdk-configuration).
 
-1. Enable SDK for your project
-2. Add `stytch.rn.test` as a Bundle ID
-3. Enable SMS Passcodes (OTP)
-
-**Install Expo**
-
-```bash
-npm install --global expo-cli
-```
+1. Enable the Frontend SDK in your project.
+2. Add `com.stytch.sdk.expo.example` as a Bundle ID.
 
 **Clone repository**
 
 ```bash
-git clone https://github.com/stytchauth/stytch-expo-integration.git
-cd stytch-expo-integration
+git clone https://github.com/stytchauth/stytch-expo-example.git
+cd stytch-expo-example
 ```
 
-Next we need to create a `.env` file to store our API keys. Modify and run the command below to create a `.env` file using the API keys found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
-
-```bash
-# in ./stytch-expo-integration/client
-echo "STYTCH_PUBLIC_TOKEN=GET_FROM_STYTCH_DASHBOARD" > .env
-```
+Copy the `.env.template` file and use the public token found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
 
 **Install Dependencies**
 
 ```bash
-# in ./stytch-expo-integration/client
 npm install
-cd ios
-pod install
-cd ..
+```
+
+**Create an Expo development build**
+
+Learn more about how to create and install a [development build](https://docs.expo.dev/develop/development-builds/introduction) to your device.
+
+```bash
+# Install Expo CLI
+npm install -g eas-cli
+
+# Install expo-dev-client
+npx expo install expo-dev-client
+
+# Login to your Expo account
+eas login
+
+# Link this example app to your Expo project.
+npm install --global eas-cli && \
+eas init --id <YOUR_EXPO_PROJECT_ID>
+
+# Create a development build of this example app
+# For an iOS simulator build, use the following command:
+eas build --profile development-simulator --platform ios
+
+# For an Android emulator build, use the following command:
+eas build --profile development --platform android
 ```
 
 **Start Expo**
 
 ```bash
-cd client
-npm install
-expo start
+npm run start
+# Press 'i' to open on iOS, or 'a' to open on Android
 ```
-
-You should now have Expo running on your machine. You can now use the Expo CLI tooling to open the mobile application in a simulator or as a web application.
 
 ## Documentation
 
-Learn more about the Stytch products used in this example app:
-
-- [SMS OTP API documentation](https://stytch.com/docs/api/sms-otp-overview)
-- [React Native SDK with Expo](https://stytch.com/docs/sdks/react-native-sdk)
+Learn more about the [React Native SDK](https://stytch.com/docs/sdks/react-native-sdk).
