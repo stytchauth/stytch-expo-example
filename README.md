@@ -1,16 +1,15 @@
-# Stytch + Expo example app
+# Stytch + React Native example app
 
 ## Overview
 
-This example app includes a mobile application powered by React Native and Expo
+This example app includes a mobile application powered by React Native. This app was created with `npx create-expo-app@latest`
 
-This application demonstrates a mobile friendly signup and sign in flow powered by Stytch. In this example the following Stytch products are used:
+This application demonstrates a mobile friendly signup and sign in flow powered by Stytch's pre-built UI. In this example the following Stytch products are used:
 
 1. [Email Magic Links](https://stytch.com/products/email-magic-links)
 2. [SMS passcodes](https://stytch.com/products/sms-passcodes)
-3. [OAuth](https://stytch.com/products/oauth)
-4. [Biometrics](https://stytch.com/products/mobile-biometrics)
-5. [Session management](https://stytch.com/products/session-management)
+3. [Biometrics](https://stytch.com/products/mobile-biometrics)
+4. [Session management](https://stytch.com/products/session-management)
 
 ## Running locally
 
@@ -22,8 +21,11 @@ Sign up and create a new project in [Stytch](https://stytch.com).
 
 Open the [Stytch Dashboard Frontend SDK Configuration](https://stytch.com/dashboard/sdk-configuration).
 
-1. Enable the Frontend SDK in your project.
-2. Add `com.stytch.sdk.expo.example` as a Bundle ID.
+1. Enable the SDK in your project.
+2. Add `com.stytch.expo.example` as a Bundle ID.
+
+Open the [Stytch Dashboard Redirect URLS](https://stytch.com/dashboard/redirect-urls).
+1. Add `stytch-ui-[YOUR_PUBLIC_TOKEN]://deeplink` and select "Login" and "Signup" as URL Types.   
 
 **Clone repository**
 
@@ -32,46 +34,30 @@ git clone https://github.com/stytchauth/stytch-expo-example.git
 cd stytch-expo-example
 ```
 
-Copy the `.env.template` file and use the public token found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
+Copy the `.env.template` file into `.env`. Set the `EXPO_PUBLIC_STYTCH_PUBLIC_TOKEN` found in your [Stytch Dashboard](https://stytch.com/dashboard/api-keys) in the local copy.
 
 **Install Dependencies**
 
 ```bash
 npm install
+# on iOS
+cd ios && pod install
 ```
 
-**Create an Expo development build**
+**Start Application**
 
-Learn more about how to create and install a [development build](https://docs.expo.dev/develop/development-builds/introduction) to your device.
+Note that your development environment must be configured to run react native applications before you can run this demo. For more information, see the [React Native docs](https://reactnative.dev/docs/environment-setup) for environment setup.
 
 ```bash
-# Install Expo CLI
-npm install -g eas-cli
-
-# Install expo-dev-client
-npx expo install expo-dev-client
-
-# Login to your Expo account
-eas login
-
-# Link this example app to your Expo project.
-npm install --global eas-cli && \
-eas init --id <YOUR_EXPO_PROJECT_ID>
-
-# Create a development build of this example app
-# For an iOS simulator build, use the following command:
-eas build --profile development-simulator --platform ios
-
-# For an Android emulator build, use the following command:
-eas build --profile development --platform android
+# open on iOS
+npm run ios
+# or on Android
+npm run android
 ```
 
-**Start Expo**
-
-```bash
-npm run start
-# Press 'i' to open on iOS, or 'a' to open on Android
-```
+**Running the Application**
+1. Email Magic Links: Make sure to log in to the associated email account on the device's browser. The redirect will only work on the same device.
+2. Biometrics: Once you log in for the first time, you can add Biometrics as a login option. You will see a "Add Biometrics Registration" button, click it and you'll be taken back to the home page where you can press "Login with Biometrics" at which point the Fingerprint prompt will appear.
 
 ## Documentation
 
